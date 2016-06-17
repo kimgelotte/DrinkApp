@@ -1,0 +1,39 @@
+﻿<link rel="stylesheet" type="text/css" href="~/Content/drinkstyle.css" />
+<h2 style="margin-top:50px;">Filter Random</h2>
+
+<div ng-app="FilterApp" ng-controller="FilterController">
+
+    <div class="container" style="display:inline-block; text-align: center; object-fit: contain;">
+        <select class="select" ng-options="x for x in tasteList" ng-model="drinkTaste">
+            <option value="">Select Taste</option>
+        </select>
+        <select class="select" ng-options="x for x in typeList" ng-init="none" ng-model="drinkType">
+            <option value="">Select Drink Type</option>
+        </select>
+        <input class="button" value="Random" type="button" ng-click="GetDrinkByFilter()" />
+        <div ng-show="warning">
+            <h1>No drink found! Try again</h1>
+        </div>
+
+        <div ng-show="drink != ''" style="margin-top: 20px;">
+            <div class="media-body">
+
+                <img src="~/Picture/Drink_Icons/{{drink.DrinkType}}.png" style="max-height: 100%; max-width: 100%; object-fit: contain; min-width:20%; min-height:20%; margin-right:auto" />
+
+            </div>
+            <div class="text-center" style="padding-top: 0%; object-fit: contain">
+                <h1 id="DrinkName">{{drink.Name}}</h1>
+                <h4 id="DrinkInfo">A {{drink.DrinkTaste}} {{drink.DrinkType}}</h4>
+                <br />
+            </div>
+        </div>
+    </div>
+</div>
+
+<div style="position: fixed; bottom: 0; right: 10px;">
+    <section class="color-7">
+        <nav class="cl-effect-4">
+            @Html.ActionLink("About this project", "About", "Home")
+        </nav>
+    </section>
+</div>

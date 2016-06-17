@@ -1,0 +1,123 @@
+﻿
+    .mark {
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .select {
+        background-color: rgba(255, 255, 255, 0.1);
+        border: 0px;
+        border-radius: 2px;
+        color: black;
+        height: 20px;
+        line-height: 20px;
+    }
+
+    .button {
+        background-color: rgba(255, 255, 255, 0.1);
+        border: 0px;
+        border-radius: 2px;
+        height: 20px;
+        line-height: 20px;
+    }
+
+    .button:hover {
+        background-color: rgba(255, 255, 255, 0.4);
+    }
+
+    .ingredientList {
+        background-color: rgba(255, 255, 255, 0.0);
+        height: 50px;
+        line-height: 50px;
+        width: 30%;
+        text-align: center;
+        border-radius: 2px;
+        border: solid black 0px;
+        font-size: 18px;
+        color: white;
+        float: left;
+        margin: 2px;
+
+    }
+
+    .ingredientList:hover {
+        background-color: rgba(255, 255, 255, 0.4);
+    }
+
+    .DrinkList {
+        background-color: rgba(255, 255, 255, 0.2);
+        height: 50px;
+        line-height: 50px;
+        width: 100%;
+        text-align: center;
+        border-radius: 2px;
+        border: solid black 0px;
+        margin: 2px auto 2px auto;
+        font-size: 25px;
+        color: white;
+        cursor: pointer;
+        max-height: 100%;
+
+    }
+
+    .DrinkList:hover {
+        background-color: rgba(255, 255, 255, 0.4);
+    }
+
+    .active {
+        background-color: rgba(255, 255, 255, 0.4);
+        height: 50px;
+        line-height: 50px;
+        width: 100%;
+        text-align: center;
+        border-radius: 2px;
+        border: solid black 0px;
+        margin-top: 2px;
+        margin-bottom: 2px;
+        font-size: 25px;
+        color: white;
+        cursor: pointer;
+
+    }
+
+    .DrinkInfo {
+        /*background-color: rgba(255, 255, 255, 0.1);*/
+        height: 100%;
+        width: 30%;
+        border-radius: 2px;
+        border: solid black 0px;
+        color: white;
+        margin: 0 auto;
+        text-align: center;
+        background: -moz-linear-gradient(top, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 100%);
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,0.1)), color-stop(100%,rgba(255,255,255,0)));
+        background: -webkit-linear-gradient(top, rgba(255,255,255,0.1) 0%,rgba(255,255,255,0) 100%);
+        background: -o-linear-gradient(top, rgba(255,255,255,0.1) 0%,rgba(255,255,255,0) 100%);
+        background: -ms-linear-gradient(top, rgba(255,255,255,0.1) 0%,rgba(255,255,255,0) 100%);
+        background: linear-gradient(to bottom, rgba(255,255,255,0.1) 0%,rgba(255,255,255,0) 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#00ffffff',GradientType=0 );
+    }
+
+    .fullList {
+        color: white;
+        text-shadow: 0 0px 6px #ffe6b3;
+    }
+
+    .ingredientList input[type=button]:active, input[type=button]:focus {
+        outline: 0;
+    }
+
+    ::-webkit-input-placeholder {
+        color: white;
+    }
+
+    :-moz-placeholder { /* Firefox 18- */
+        color: white;
+    }
+
+    ::-moz-placeholder { /* Firefox 19+ */
+        color: white;
+    }
+
+    :-ms-input-placeholder {
+        color: white;
+    }

@@ -1,0 +1,69 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Mix N Match</h2>
+
+<div ng-app="MNMApp" ng-controller="MNMController">
+
+    <select ng-options="Name.Name for Name in list" ng-model="Lista"></select>
+    <input type="button" value="Add" ng-click="addToArray()" />
+    <div style="margin: 0 auto; width:40%; ">
+        <div ng-repeat="x in ingredientLista">
+            <div class="ingredientList" style="position:relative;">{{x.Name}}<input type="button" value="-" ng-click="removeItem(x)" style="position:absolute;  border-radius:0 25px 25px 0; width:20%; right:0; top:0; bottom:0;" /></div>
+        </div>
+    </div>
+    <div style="clear:both;"><input type="button" value="Mix N Match" ng-click="mixNmatch()" /></div>
+    <div ng-repeat="x in drinkList | orderBy: 'x.Counter'">
+        <div class="ingredientList" style="margin:0 auto; float:none;" ng-click="ShowDrinkInfo(x.DrinkID)" ng-class="{'fullList' : x.Counter == x.IngredientCount }">{{x.Name}} {{x.Procent}}% match </div>
+    </div>
+    <div style="border:0px;border-radius:20px;margin:0 auto;background-color:wheat;width:30%;" ng-show="drinkIngredient != ''">
+        <table style="width:100%; table-layout:fixed; margin-bottom:10px;">
+            <thead>
+                <tr>
+                    <td colspan="3">
+                        <h1>{{drinkIngredient.Name}}</h1>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Ingredients</td>
+                    <td>Amount</td>
+                    <td>Order</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="x in drinkIngredient.DRI | orderBy:'Order'">
+                    <td>{{x.Name}}</td>
+                    <td>{{x.Amount}}</td>
+                    <td>{{x.Order}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<style>
+    body {
+        color: black;
+    }
+
+    .ingredientList {
+        background-color: rgba(255, 0, 0, 0.3);
+        height: 50px;
+        width: 30%;
+        text-align: center;
+        border-radius: 25px;
+        border: solid black 2px;
+        font-size: 25px;
+        color: black;
+        float: left;
+    }
+    .fullList{
+        color:red;
+    }
+
+        .ingredientList input[type=button]:active, input[type=button]:focus {
+            outline: 0;
+        }
+</style>

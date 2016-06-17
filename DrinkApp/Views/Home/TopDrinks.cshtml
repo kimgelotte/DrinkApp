@@ -1,0 +1,35 @@
+﻿
+<div ng-app="TDApp" ng-controller="TDController">
+    <div class="container" style="display:inline-block; text-align: center; object-fit: contain">
+        
+        <div>
+        <div class="media-body">
+            <h2 style="margin: 5%">Top Rated Drinks</h2>
+            <img src="~/Picture/Drink_Icons/{{selectedDrink.DrinkType}}.png" style="max-height: 100%; max-width: 100%; object-fit: contain; min-width:20%; min-height:20%; margin-right:auto" />
+
+        </div>
+        <div class="text-center" style="padding-top: 0%; object-fit: contain">
+            <h1 id="DrinkName">{{selectedDrink.Name}}</h1>
+            <h4 id="DrinkInfo">A {{selectedDrink.DrinkTaste}} {{selectedDrink.DrinkType}}</h4>
+            <h4 id="DrinkInfo">
+                {{selectedDrink.Counter}} Likes!
+            </h4><br /></div>
+        </div>
+        
+        <div ng-repeat="x in drinkList" style="cursor:pointer;" ng-hide="$index === selectedIndex" ng-click="PickDrink(x, $index)">
+            <section class="color-7">
+                <nav class="cl-effect-4">
+                    {{x.Name}}
+                </nav>
+            </section>
+        </div>
+    </div>
+</div>
+
+<div style="position: fixed; bottom: 0; right: 10px;">
+    <section class="color-7">
+        <nav class="cl-effect-4">
+            @Html.ActionLink("About this project", "About", "Home")
+        </nav>
+    </section>
+</div>

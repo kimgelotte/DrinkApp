@@ -1,0 +1,127 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Roboto:300' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="~/Content/Scrollbar/perfect-scrollbar.css" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DrinkApp</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Content/bootstrap.min.css" rel="publisher" />
+    <script src="~/Scripts/Scrollbar/perfect-scrollbar.jquery.js"></script>
+    <script src="~/Scripts/jquery-2.2.1.js"></script>
+    <script src="~/Scripts/angular.min.js"></script>
+    <script src="~/Scripts/App/Drink.js"></script>
+</head>
+
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top container-fluid">
+        <div class="navbar-custom" style="margin-left:auto; margin-right:auto; display:inline-block; height: 100px;">
+            <table style="width:100%; float:none; margin-top: 5px;">
+                <tr>
+                    <td>
+                        <a href="~/Home/Index">
+                            <img src="~/Picture/Menu_Icons/Reload.png" />
+                        </a> <br />
+                        <nav class="cl-effect-4">
+                            @Html.ActionLink("Random", "Index", "Home")
+                        </nav>
+                    </td>
+                    <td>
+                        <a href="~/Home/Filter">
+                            <img src="~/Picture/Menu_Icons/filter.png" />
+                        </a> <br />
+                        <nav class="cl-effect-4">
+                            @Html.ActionLink("Filter Random", "Filter", "Home")
+                        </nav>
+                    </td>
+                    <td>
+                        <a href="~/Home/TopDrinks">
+                            <img src="~/Picture/Menu_Icons/top.png" />
+                        </a> <br />
+                        <nav class="cl-effect-4">
+                            @Html.ActionLink("Top Rated Drinks", "TopDrinks", "Home")
+                        </nav>
+                    </td>
+                    <td>
+                        <a href="~/Home/MixNMatch">
+                            <img src="~/Picture/Menu_Icons/mix.png" />
+                        </a> <br />
+                        <nav class="cl-effect-4">
+                            @Html.ActionLink("Mix N Match", "MixNMatch", "Home")
+                        </nav>
+                    </td>
+                    <td>
+                        <a href="~/Home/Search">
+                            <img src="~/Picture/Menu_Icons/search.png" />
+                        </a> <br />
+                        <nav class="cl-effect-4">
+                            @Html.ActionLink("Search", "Search", "Home")
+                        </nav>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div style="position:relative; z-index:2; text-align: center; padding-top:inherit">@RenderBody()</div>
+    <div class="gradbg" style="position:absolute; z-index:1">
+    </div>
+    <script lang="JavaScript" type="text/javascript">
+        // Define variable colors
+        //var back = ["#22A7F0", "#8E44AD", "#AEA8D3", "#F62459", "#DB0A5B", "#D64541", "#D2527F", "#2C3E50", "#87D37C", "#1E8BC3", "#4ECDC4", "#c19234", "#F9BF3B", "#F9690E"];
+        var back2 = [{ top: "#22A7F0", bot: "#8E44AD" },
+                     { top: "#AEA8D3", bot: "#F62459" },
+                     { top: "#DB0A5B", bot: "#D64541" },
+                     { top: "#D2527F", bot: "#2C3E50" },
+                     { top: "#87D37C", bot: "#1E8BC3" },
+                     { top: "#4ECDC4", bot: "#c19234" },
+                     { top: "#F9BF3B", bot: "#F9690E" }, ];
+
+
+        $('.gradbg').each(function () {
+
+            // First random color
+            // var rand1 = back[Math.floor(Math.random() * back.length)];
+            // Second random color
+            var backObject = back2[Math.floor(Math.random() * back2.length)];
+            var rand1 = backObject.top;
+            var rand2 = backObject.bot;
+            //var rand2 = back[Math.floor(Math.random() * back.length)];
+
+            var grad = $(this);
+
+            // Convert Hex color to RGB
+            function convertHex(hex, opacity) {
+                hex = hex.replace('#', '');
+                r = parseInt(hex.substring(0, 2), 16);
+                g = parseInt(hex.substring(2, 4), 16);
+                b = parseInt(hex.substring(4, 6), 16);
+
+                // Add Opacity to RGB to obtain RGBA
+                result = 'rgba(' + r + ',' + g + ',' + b + ',' + opacity / 100 + ')';
+                return result;
+            }
+
+            // Gradient rules
+            grad.css('background-color', convertHex(rand1, 100));
+            grad.css("background-image", "-webkit-gradient(linear, left top, left bottom, color-stop(0%," + convertHex(rand1, 100) + "), color-stop(100%," + convertHex(rand2, 100) + "))");
+            grad.css("background-image", "-webkit-linear-gradient(top,  " + convertHex(rand1, 100) + " 0%," + convertHex(rand2, 100) + " 100%)");
+            grad.css("background-image", "-o-linear-gradient(top, " + convertHex(rand1, 100) + " 0%," + convertHex(rand2, 100) + " 100%)");
+            grad.css("background-image", "-ms-linear-gradient(top, " + convertHex(rand1, 100) + " 0%," + convertHex(rand2, 100) + " 100%)");
+            grad.css("background-image", "linear-gradient(to bottom, " + convertHex(rand1, 100) + " 0%," + convertHex(rand2, 100) + " 100%)");
+            grad.css("filter", "progid:DXImageTransform.Microsoft.gradient( startColorstr='" + convertHex(rand1, 100) + "', endColorstr='" + convertHex(rand2, 40) + "',GradientType=0 )");
+
+        });
+    </script>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/Scrollbar")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+
+    
+</body>
+</html>

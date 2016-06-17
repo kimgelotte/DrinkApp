@@ -1,0 +1,38 @@
+﻿@model DrinkApp.DAL.Drink
+@{
+    ViewBag.Title = "Home Page";
+}
+<html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js"></script>
+    <link rel="stylesheet" type="text/css" href="~/Content/grad.css" />
+</head>
+<body>
+    <div class="container" style="display:inline-block; text-align: center; margin-top: 5%; object-fit: contain">
+        <div class="media-body">        
+            <img src="~/Picture/Drink_Icons/@(Model.DrinkType).png" style="max-height: 100%; max-width: 100%; object-fit: contain; min-width:20%; min-height:20%" />
+        </div>
+        <div class="text-center" style="padding-top: 0%; object-fit: contain"><br />
+            <h1 id="DrinkName">@Html.DisplayFor(model => model.Name)</h1>
+            <h4 id="DrinkInfo">A @Html.DisplayFor(Model => Model.DrinkTaste) @Html.DisplayFor(model => model.DrinkType)</h4><br /><br />
+        </div>
+        <section class="color-7">
+            <nav class="cl-effect-4">
+                <div class="bot">
+                    @Html.ActionLink("Give me a new drink", "Index", "Home", new { style = "text-decoration:none;" })
+                </div> 
+            </nav>
+        </section>
+
+    </div>
+
+    <div style="position: fixed; bottom: 0; right: 10px;">
+        <section class="color-7">
+            <nav class="cl-effect-4">
+                @Html.ActionLink("About this project", "About", "Home")
+            </nav>
+        </section>
+    </div>
+</body>
+</html>
+

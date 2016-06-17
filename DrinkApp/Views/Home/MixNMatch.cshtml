@@ -1,0 +1,157 @@
+﻿
+<h2 style="margin-top:50px;">Mix N Match</h2>
+
+<div ng-app="MNMApp" ng-controller="MNMController">
+
+    <div style="margin-bottom: 4px; display:inline-block">
+        <select class="select" ng-options="Name.Name for Name in list" ng-model="Lista" >
+            <option></option>   
+        </select>
+        <input class="button" type="button" value="Add" ng-click="addToArray()" />
+        <input class="button" type="button" value="Mix N Match" ng-click="mixNmatch() ;ClearInfo() " />
+    </div>
+
+    <div style="margin: 0 auto; width:40%; ">
+        <div ng-repeat="x in ingredientLista">
+            <div class="ingredientList" style="position:relative;">{{x.Name}}<input type="button" value="" ng-click="removeItem(x)" style="position:absolute; border-radius:0 2px 2px 0; width:100%; right:0; top:0; bottom:0; background:none; border:0px" /></div>
+        </div>
+    </div>
+
+    <div style="clear:both;"></div><br />
+    <div ng-repeat="x in drinkList |limitTo:5">
+        <div class="DrinkList" float:none; font-size:25px" ng-click="ShowDrinkInfo(x)" ng-class="{'fullList' : x.Counter == x.IngredientCount }">{{x.Name}} </div>
+    </div>
+
+    <div style="height: 20%; position:relative; bottom: 0px;" class="DrinkInfo" ng-show="drinkIngredient != ''">
+        <table style="width:100%; table-layout:fixed; margin-top:10px;">
+            <thead>
+                <tr>
+                    <td colspan="3" style="position:relative;">
+                        <h1>{{drinkIngredient.Name}}</h1><h4>{{Procent}}% match!</h4>
+                    </td>
+                </tr>
+
+            </thead>
+            <tbody>
+                <tr>
+                    <td><h4>Amount</h4></td>
+                    <td><h4>Ingredients</h4></td>
+                    <td><h4>Order</h4></td>
+                </tr>
+                <tr ng-repeat="x in drinkIngredient.DRI | orderBy:'Order'" ng-class="FindMatchIngredent(x)" >
+                    <td>{{x.Amount}}</td>
+                    <td>{{x.Name}}</td>
+                    <td>{{x.Order}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div style="position: fixed; bottom: 0; right: 10px;">
+    <section class="color-7">
+        <nav class="cl-effect-4">
+            @Html.ActionLink("About this project", "About", "Home")
+        </nav>
+    </section>
+</div>
+
+<style>
+    .mark{
+        background-color: rgba(255, 255, 255, 0.1); 
+    }
+    .select{
+        background-color: rgba(255, 255, 255, 0.1); 
+        border:0px;
+        border-radius: 2px;
+        color:black;
+        height: 20px;
+        line-height: 20px;
+
+    }
+
+    .button{
+        background-color: rgba(255, 255, 255, 0.1); 
+        border:0px;
+        border-radius: 2px;
+        height: 20px;
+        line-height: 20px;
+    }
+    .button:hover {
+        background-color: rgba(255, 255, 255, 0.4);
+    }
+    .ingredientList {
+        background-color: rgba(255, 255, 255, 0.1);
+        height: 50px;
+        line-height: 50px;
+        width: 30%;
+        text-align: center;
+        border-radius: 2px;
+        border: solid black 0px;
+        font-size: 18px;
+        color: white;
+        float: left;
+        margin: 2px;
+    }
+    .ingredientList:hover {
+        background-color: rgba(255, 255, 255, 0.4);
+    }
+
+    .DrinkList {
+        background-color: rgba(255, 255, 255, 0.2);
+        height: 50px;
+        line-height: 50px;
+        width: 30%;
+        text-align: center;
+        border-radius: 2px;
+        border: solid black 0px;
+        margin: 2px auto 2px auto;
+        font-size: 25px;
+        color: white;
+        cursor: pointer;
+        max-height: 100%;
+    }
+
+    .DrinkList:hover {
+        background-color: rgba(255, 255, 255, 0.4);
+    }
+    .active {
+        background-color: rgba(255, 255, 255, 0.4);
+        height: 50px;
+        line-height: 50px;
+        width: 100%;
+        text-align: center;
+        border-radius: 2px;
+        border: solid black 0px;
+        margin-top: 2px;
+        margin-bottom: 2px;
+        font-size: 25px;
+        color: white;
+        cursor: pointer;
+    }
+    .DrinkInfo {
+        /*background-color: rgba(255, 255, 255, 0.1);*/
+        height: 100%;
+        width: 30%;
+        border-radius: 2px;
+        border: solid black 0px;
+        color: white;
+        margin: 0 auto;
+        text-align: center;
+        background: -moz-linear-gradient(top, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 100%);
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,0.1)), color-stop(100%,rgba(255,255,255,0)));
+        background: -webkit-linear-gradient(top, rgba(255,255,255,0.1) 0%,rgba(255,255,255,0) 100%);
+        background: -o-linear-gradient(top, rgba(255,255,255,0.1) 0%,rgba(255,255,255,0) 100%);
+        background: -ms-linear-gradient(top, rgba(255,255,255,0.1) 0%,rgba(255,255,255,0) 100%);
+        background: linear-gradient(to bottom, rgba(255,255,255,0.1) 0%,rgba(255,255,255,0) 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#00ffffff',GradientType=0 );
+    }
+    .fullList {
+        color: white;
+        text-shadow: 0 0px 6px #ffe6b3;
+    }
+
+    .ingredientList input[type=button]:active, input[type=button]:focus {
+        outline: 0;
+    }
+</style>

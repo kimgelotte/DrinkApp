@@ -8,6 +8,7 @@ namespace DrinkApp
     {
         public void Configuration(IAppBuilder app)
         {
+            // init
             ConfigureAuth(app);
         }
     }
